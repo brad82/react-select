@@ -344,7 +344,13 @@ var Select = React.createClass({
 
 	fireChangeEvent: function(newState) {
 		if (newState.value !== this.state.value && this.props.onChange) {
-			this.props.onChange(newState.value, newState.values);
+			var e = {
+                target: this.refs.value.getDOMNode()
+            };
+
+            e.target.value = newState.value
+
+			this.props.onChange(e);
 		}
 	},
 
